@@ -12,42 +12,37 @@ $title = $description = $video_link = $cover = null;
 
 if (!empty($_POST)) {
     $title = $_POST['title'];
-    $description = str_replace(',', '.', $_POST['description']); // on remplace la , par un . pour le prix
     $video_link = $_FILES['video_link'];
 
     // Définir un tableau d'erreur vide qui va se remplir après chaque erreur
      $errors = [];
-    // Vérifier le name
-    if (empty($name)) {
-        $errors['name'] = 'Le nom n\'est pas valide';
+    // Vérifier le titre
+    if (empty($title)) {
+        $errors['title'] = 'Le nom n\'est pas valide';
     }
-    // Vérifier le price
-    if (!is_numeric($price) || $price < 5 || $price > 19.99) {
-        $errors['price'] = 'Le prix n\'est pas valide';
+    // Vérifier le description
+    if (empty($description)) {
+        $errors['description'] = 'Le prix n\'est pas valide';
      }
-    // Vérifier l'image
-    if ($image['error'] === 4) {
-        $errors['image'] = 'L\'image n\'est pas valide';
+    // Vérifier la vidéo
+    if ($video_link['error'] === 4) {
+        $errors['video_link'] = 'L\'image n\'est pas valide';
     }
     // Vérifier la catégorie
-    if (empty($category) || !in_array($category, ['Classique', 'Spicy', 'Hot', 'Végétarienne'])) {
+    if (empty($category) || !in_array($category, ['Action', 'Horreur', 'Aventure', 'Animation'])) {
         $errors['category'] = 'La catégorie n\'est pas valide';
     }
-    // Vérifier la description
-    if (empty($description)) {
-        $errors['description'] = 'La description n\'est pas valide';
-    }
+
 
     // S'il n'y a pas d'erreurs dans le formulaire
     if (empty($errors)) {
         $query = $db->prepare('
-            INSERT INTO pizza (`name`, `price`, `image`, `category`, `description`) VALUES (:name, :price, :image, :category, :description)
+            INSERT INTO pizza (`title`, `description`, `video_link`, `category`) VALUES (:title, :description, :video_link, :category)
         ');
-        $query->bindValue(':name', $name, PDO::PARAM_STR);
-        $query->bindValue(':price', $price, PDO::PARAM_STR);
-        $query->bindValue(':image', $fileName, PDO::PARAM_STR);
-        $query->bindValue(':category', $category, PDO::PARAM_STR);
+        $query->bindValue(':title', $title, PDO::PARAM_STR);
         $query->bindValue(':description', $description, PDO::PARAM_STR);
+        $query->bindValue(':video_link', $video_link, PDO::PARAM_STR);
+        $query->bindValue(':category', $category, PDO::PARAM_STR);
         if ($query->execute()) { // On insère la pizza dans la BDD
             $success = true;
             // Envoyer un mail ?
@@ -65,30 +60,30 @@ if (!empty($_POST)) {
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="name">Nom :</label>
-                    <input type="text" name="name" id="name" class="form-control <?php echo isset($errors['name']) ? 'is-invalid' : null; ?>" value="<?php echo $name; ?>">
-                    <?php if (isset($errors['name'])) {
+                    <label for="title">Nom du film :</label>
+                    <input type="text" name="title" id="title" class="form-control <?php echo isset($errors['title']) ? 'is-invalid' : null; ?>" value="<?php echo $title; ?>">
+                    <?php if (isset($errors['title'])) {
                         echo '<div class="invalid-feedback">';
-                            echo $errors['name'];
+                            echo $errors['title'];
                         echo '</div>';
                     } ?>
                 </div>
                 <div class="form-group">
-                    <label for="price">Prix :</label>
-                    <input type="text" name="price" id="price" class="form-control <?php echo isset($errors['price']) ? 'is-invalid' : null; ?>" value="<?php echo $price; ?>">
-                    <?php if (isset($errors['price'])) {
+                    <label for="description">Description :</label>
+                    <input type="text" name="description" id="description" class="form-control <?php echo isset($errors['description']) ? 'is-invalid' : null; ?>" value="<?php echo $description; ?>">
+                    <?php if (isset($errors['descritpion'])) {
                         echo '<div class="invalid-feedback">';
-                            echo $errors['price'];
+                            echo $errors['description'];
                         echo '</div>';
                     } ?>
                 </div>
                 <div class="form-group">
-                    <label for="image">Image :</label>
+                    <label for="video_link">Lien du film :</label>
                     <input type="hidden" name="MAX_FILE_SIZE" value="1048576" />
-                    <input type="file" name="image" id="image" class="form-control <?php echo isset($errors['image']) ? 'is-invalid' : null; ?>">
-                    <?php if (isset($errors['image'])) {
+                    <input type="file" name="video_link" id="video_link" class="form-control <?php echo isset($errors['vdieo_link']) ? 'is-invalid' : null; ?>">
+                    <?php if (isset($errors['video_link'])) {
                         echo '<div class="invalid-feedback">';
-                            echo $errors['image'];
+                            echo $errors['video_link'];
                         echo '</div>';
                     } ?>
                 </div>
