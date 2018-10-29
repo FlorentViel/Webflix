@@ -29,8 +29,8 @@
             <div class="col-sm-8 col-md-7 py-4">
               <h4 class="text-white">Navigation</h4>
               <ul class="list-unstyled">
-                <li><a href="index.php" class="text-white">Accueil</a></li>
-                <li><a href="#" class="text-white">Film</a></li>
+                <li><a href="index.php" class="text-white">Film</a></li>
+                <li><a href="movie_single.php" class="text-white">Poster un film</a></li>
                 <li><a href="#" class="text-white">Catégorie</a></li>
               </ul>
             </div>
