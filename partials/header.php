@@ -1,9 +1,12 @@
-<?php require_once(__DIR__.'/../config/database.php');
+<?php 
+      require_once(__DIR__.'/../config/database.php');
+      require_once(__DIR__.'/../config/config.php');
+
 
 //var_dump($db); ?>
 
 <!doctype html>
-<html lang="en">
+<html lang="frx">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -11,13 +14,13 @@
     <meta name="author" content="">
     <link rel="icon" href="../../../../favicon.ico">
 
-    <title>Album example for Bootstrap</title>
+    <title><?php echo $siteName . ' - ' . $currentPageTitle; ?></title>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
     <!-- Custom styles for this template -->
-    <link href="album.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
   </head>
 
   <body>
@@ -30,7 +33,7 @@
               <h4 class="text-white">Navigation</h4>
               <ul class="list-unstyled">
                 <li><a href="index.php" class="text-white">Film</a></li>
-                <li><a href="movie_single.php" class="text-white">Poster un film</a></li>
+                <li><a href="add_movie.php" class="text-white">Poster un film</a></li>
                 <li><a href="#" class="text-white">Catégorie</a></li>
               </ul>
             </div>
@@ -47,9 +50,9 @@
       </div>
       <div class="navbar navbar-dark bg-dark shadow-sm">
         <div class="container d-flex justify-content-between">
-          <a href="#" class="navbar-brand d-flex align-items-center">
+          <a href="index.php" class="navbar-brand d-flex align-items-center">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
-            <strong>Album</strong>
+            <strong id ="webflix-top"><?php echo $siteName . ' - ' . $currentPageTitle;?></strong>
           </a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -57,3 +60,19 @@
         </div>
       </div>
     </header>
+
+<main role="main">
+
+<section class="jumbotron text-center">
+  <div class="container bg-secondary">
+    <h1 class="jumbotron-heading"><?php 
+        echo $currentPageTitle; ?></h1>
+    <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don't simply skip over it entirely.</p>
+    <p>
+      <a href="#" class="btn btn-primary my-2">Main call to action</a>
+      <a href="#" class="btn btn-secondary my-2">Secondary action</a>
+    </p>
+  </div>
+</section>
+
+</main>
