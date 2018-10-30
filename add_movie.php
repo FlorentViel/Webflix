@@ -26,7 +26,7 @@ if (!empty($_POST)) {
         $errors['title'] = 'Le titre du film n\'est pas valide';
     }
     if (empty($cover)) {
-        $errors['cover'] = 'Le titre du film n\'est pas valide';
+        $errors['cover'] = 'La couverture du film n\'est pas valide';
     }
     // Vérifier le description
     if (empty($description)) {
@@ -88,18 +88,28 @@ if (!empty($_POST)) {
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
-                <input type="text" name="title" id="title" class="form-control" placeholder="Nom de votre film*" <?php echo isset($errors['title']) ? 'is-invalid' : null; ?>" value="<?php echo $title; ?>">
+                <input type="text" name="title" id="title" class="form-control" placeholder="Nom de votre film*" <?php echo isset($errors['title']) ? 'invalid' : null; ?>" value="<?php echo $title; ?>">
                     <?php if (isset($errors['title'])) {
-                        echo '<div class="invalid-feedback">';
-                            echo $errors['title'];
-                        echo '</div>';
+                    echo '<div class ="invalid">';
+                    echo $errors['title'];
+                    echo '</div>';
                     } ?>
                 </div>
                 <div class="form-group">
-                    <input type="text" name="video_link" class="form-control" placeholder="URL de votre film*"/>
+                    <input type="text" name="video_link" class="form-control" placeholder="URL de votre film*" <?php echo isset($errors['video_link']) ? 'invalid' : null; ?>" value="<?php echo $video_link; ?>"/>
+                    <?php if (isset($errors['video_link'])) {
+                    echo '<div class ="invalid">';
+                    echo $errors['video_link'];
+                    echo '</div>';
+                    } ?>
                 </div>
                 <div class="form-group">
-                    <input type="text" name="cover" class="form-control" placeholder="Cover*"/>
+                    <input type="text" name="cover" class="form-control" placeholder="Cover*" <?php echo isset($errors['cover']) ? 'invalid' : null; ?>" value="<?php echo $cover; ?>"/>
+                    <?php if (isset($errors['cover'])) {
+                    echo '<div class ="invalid">';
+                    echo $errors['cover'];
+                    echo '</div>';
+                    } ?>
                 </div>
                 <div class="form-group">
                     <select name="category_idcategory" class="form-control"/>
@@ -108,7 +118,15 @@ if (!empty($_POST)) {
                     <option <?php echo ($category_idcategory === '2') ? 'selected' : ''; ?> value ="2">Horreur</option>
                     <option <?php echo ($category_idcategory === '3') ? 'selected' : ''; ?> value ="3">Aventure</option>
                     <option <?php echo ($category_idcategory === '4') ? 'selected' : ''; ?> value ="4">Animation</option>
+                </select>
+                <?php if (isset($errors['category_idcategory'])) {
+                        echo '<div class="invalid">';
+                            echo $errors['category_idcategory'];
+                        echo '</div>';
+                    } ?>
                 </div>
+
+               <?php var_dump($category_idcategory); ?>
                 <div class="form-group">
                     <input type="submit" name="btnSubmit" class="btnContact" value="Send Message" />
                 </div>
@@ -124,10 +142,14 @@ if (!empty($_POST)) {
 
 </main>
 
-<?php echo 'nom du film : ' . $title . '<br/>';?>
+<?php if (isset($errors['title'])) {
+echo $errors['title'];
+ }
+ else  echo 'nom du film : ' . $title . '<br/>';?> 
+
 <?php echo 'description : ' . $description . '<br/>'; ?>
 <?php echo 'cover :' . $cover . '<br/>'; ?>
-<?php echo 'category_id_category :' . $category_id_category . '<br/>'; ?>
+<?php echo 'category_idcategory :' . $category_idcategory . '<br/>'; ?>
 
 
 <?php echo($video_link); ?>
