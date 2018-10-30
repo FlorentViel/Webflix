@@ -10,6 +10,12 @@ text-white {
     color: white;
 }
 
+.invalid {
+    color: red;
+    margin-left: 10px;
+    margin-top: 5px;
+}
+
 .contact-form{
     background: #fff;
     margin-top: 10%;

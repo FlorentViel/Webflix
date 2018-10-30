@@ -29,9 +29,10 @@ if (!empty($_POST)) {
         $errors['cover'] = 'La couverture du film n\'est pas valide';
     }
     // Vérifier le description
-    if (empty($description)) {
-        $errors['description'] = 'La description n\'est pas valide';
+    if (strlen($description) <= 15)  {
+        $errors['description'] = 'Description invalide. 15 caractères minimum';
     }
+
     // Vérifier la vidéo
     if (empty($video_link)) {
         $errors['video_link'] = 'La video n\'est pas valide';
@@ -133,7 +134,14 @@ if (!empty($_POST)) {
             </div>
             <div class="col-md-6">
                 <div class="form-group">
-                    <textarea name="description" class="form-control" placeholder="Description *" style="width: 100%; height: 202px;"></textarea>
+                    <textarea name="description" class="form-control"  rows="5" placeholder="Description *" style="width: 100%; height: 202px;"></textarea>
+                    <?php  
+                    if(isset($errors['description'])){
+                        echo '<div class="invalid">';
+                        echo $errors['description'];
+                        echo '</div>';
+                    }
+                     ?>
                 </div>
             </div>
         </div>

@@ -5,9 +5,9 @@ $currentPageTitle = 'Delete';
 require_once(__DIR__.'/partials/header.php');
 
 $id = isset($_GET['id']) ? $_GET['id'] : 0;
-//$query = $db->prepare('DELETE FROM `movie` WHERE `movie`.`id` = :id'); 
-//$query->bindValue(':id', $id , PDO::PARAM_INT); // On assure que 'lid est bien un entier
-//$query->execute(); // Excute la requête
+$query = $db->prepare('DELETE FROM `movie` WHERE `movie`.`id` = :id'); 
+$query->bindValue(':id', $id , PDO::PARAM_INT); // On assure que 'lid est bien un entier
+$query->execute(); // Excute la requête
 
 //echo 'delete'; 
 
