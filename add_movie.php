@@ -17,7 +17,7 @@ if (!empty($_POST)) {
     $video_link = $_POST['video_link'];
     $description = $_POST['description'];
     $category_idcategory = $_POST['category_idcategory'];
-    $cover = $_POST['cover'];
+    $cover = $_FILES['cover'];
 
     // Définir un tableau d'erreur vide qui va se remplir après chaque erreur
      $errors = [];
@@ -47,6 +47,16 @@ if (!empty($_POST)) {
         //$errors['category_id'] = 'La catégorie n\'est pas valide';
     //}
 
+    var_dump($cover);
+    $file = $cover['tmp_name']; // Emplacement du fichier temporaire
+    $finfo = finfo_open(FILEINFO_MIME_TYPE);
+    $mimeType = finfo_file($finfo, $file); 
+    $allowedExtension = ['image/jpg', 'image/jpeg', 'image/gif', 'image/png'];
+    $fileName = 'assets/img/movie/'.$cover['name'];
+    if (!in_array($mimeType, $allowedExtension)){
+        $errors['cover'] = 'Ce type de fichier n\'est pas autorisé';
+    }
+
 
     // S'il n'y a pas d'erreurs dans le formulaire
     if (empty($errors)) {
@@ -57,7 +67,7 @@ if (!empty($_POST)) {
         $query->bindValue(':title', $title, PDO::PARAM_STR);
         $query->bindValue(':description', $description, PDO::PARAM_STR);
         $query->bindValue(':video_link', $video_link, PDO::PARAM_STR);
-        $query->bindValue(':cover', $cover, PDO::PARAM_STR);
+        $query->bindValue(':cover', $fileName, PDO::PARAM_STR);
         $query->bindValue(':category_idcategory', $category_idcategory, PDO::PARAM_STR);
 
         if ($query->execute()) { // On insère le film dans la BDD
@@ -105,7 +115,8 @@ if (!empty($_POST)) {
                     } ?>
                 </div>
                 <div class="form-group">
-                    <input type="text" name="cover" class="form-control" placeholder="Cover*" <?php echo isset($errors['cover']) ? 'invalid' : null; ?>" value="<?php echo $cover; ?>"/>
+                    <input type="hidden" name="MAX_FILE_SIZE" value="1048576" />
+                    <input type="file" name="cover" class="form-control" placeholder="Cover*" <?php echo isset($errors['cover']) ? 'invalid' : null; ?>/>
                     <?php if (isset($errors['cover'])) {
                     echo '<div class ="invalid">';
                     echo $errors['cover'];
@@ -156,7 +167,7 @@ echo $errors['title'];
  else  echo 'nom du film : ' . $title . '<br/>';?> 
 
 <?php echo 'description : ' . $description . '<br/>'; ?>
-<?php echo 'cover :' . $cover . '<br/>'; ?>
+<?php echo 'cover :' . $fileName . '<br/>'; ?>
 <?php echo 'category_idcategory :' . $category_idcategory . '<br/>'; ?>
 
 
