@@ -50,8 +50,17 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="text-center">
             <button class="btn btn-lg btn-block btn-dark text-uppercase font-weight-bold">Ajouter</button>
         </div>
     </form>
+
+<?php
+
+        $query = $db->prepare('
+        INSERT INTO `movie` (`title`, `description`, `video_link`, `cover`, `category_idcategory`) VALUES (:title, :description, :video_link, :cover , :category_idcategory)
+        ');
+
+
+?>

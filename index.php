@@ -38,6 +38,12 @@ $movies = $query->fetchall();
                 <?php echo '<a href="movie_single.php?id='.$movie['id'].'">Regardez le film</a>' ?>
                 </button>
                 <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                <button type="button" class="btn btn-sm btn-outline-danger"><?php 
+                $id = $movie['id'];
+                $query = $db->prepare('DELETE FROM `movie` WHERE `movie`.`id` = :id'); 
+                $query->bindValue(':id', $id , PDO::PARAM_INT); // On assure que 'lid est bien un entier
+                $query->execute(); // Excute la requête?> 
+                Delete</button>
               </div>
               <small class="text-muted">9 mins</small>
             </div>

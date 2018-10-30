@@ -8,7 +8,7 @@ require_once(__DIR__.'/partials/header.php');
 
 $title = $description = $video_link = null;
 $cover = null;
-$category_id_category = null;
+$category_idcategory = null;
 
 // le formulaire est soumis
 
@@ -16,7 +16,7 @@ if (!empty($_POST)) {
     $title = $_POST['title'];
     $video_link = $_POST['video_link'];
     $description = $_POST['description'];
-    $category_id_category = $_POST['category_id_category'];
+    $category_idcategory = $_POST['category_idcategory'];
     $cover = $_POST['cover'];
 
     // Définir un tableau d'erreur vide qui va se remplir après chaque erreur
@@ -36,6 +36,11 @@ if (!empty($_POST)) {
     if (empty($video_link)) {
         $errors['video_link'] = 'La video n\'est pas valide';
     }
+
+    // Vérifier la catégorie
+    if (empty($category_idcategory) || !in_array($category_idcategory, ['1', '2', '3', '4'])) {
+        $errors['category_id_category'] = 'La catégorie n\'est pas valide';
+    }
     // Vérifier la catégorie
     //if (empty($category) || !in_array($category, ['Action', 'Horreur', 'Aventure', 'Animation'])) {
         //$errors['category_id'] = 'La catégorie n\'est pas valide';
@@ -45,13 +50,15 @@ if (!empty($_POST)) {
     // S'il n'y a pas d'erreurs dans le formulaire
     if (empty($errors)) {
         $query = $db->prepare('
-        INSERT INTO `movie` (`title`, `description`, `video_link`, `cover`) VALUES (:title, :description, :video_link, :cover)
+        INSERT INTO `movie` (`title`, `description`, `video_link`, `cover`, `category_idcategory`) VALUES (:title, :description, :video_link, :cover , :category_idcategory)
         ');
         
         $query->bindValue(':title', $title, PDO::PARAM_STR);
         $query->bindValue(':description', $description, PDO::PARAM_STR);
         $query->bindValue(':video_link', $video_link, PDO::PARAM_STR);
         $query->bindValue(':cover', $cover, PDO::PARAM_STR);
+        $query->bindValue(':category_idcategory', $category_idcategory, PDO::PARAM_STR);
+
         if ($query->execute()) { // On insère le film dans la BDD
             $success = true;
             // Envoyer un mail ?
@@ -95,12 +102,12 @@ if (!empty($_POST)) {
                     <input type="text" name="cover" class="form-control" placeholder="Cover*"/>
                 </div>
                 <div class="form-group">
-                    <select name="category_id_category" class="form-control"/>
+                    <select name="category_idcategory" class="form-control"/>
                     <option value="">Choisir la catégorie</option>
-                    <option <?php echo ($category_id_category === '1') ? 'selected' : ''; ?> value ="1">Action</option>
-                    <option <?php echo ($category_id_category === '2') ? 'selected' : ''; ?> value ="2">Horreur</option>
-                    <option <?php echo ($category_id_category === '3') ? 'selected' : ''; ?> value ="3">Aventure</option>
-                    <option <?php echo ($category_id_category === '4') ? 'selected' : ''; ?> value ="4">Animation</option>
+                    <option <?php echo ($category_idcategory === '1') ? 'selected' : ''; ?> value ="1">Action</option>
+                    <option <?php echo ($category_idcategory === '2') ? 'selected' : ''; ?> value ="2">Horreur</option>
+                    <option <?php echo ($category_idcategory === '3') ? 'selected' : ''; ?> value ="3">Aventure</option>
+                    <option <?php echo ($category_idcategory === '4') ? 'selected' : ''; ?> value ="4">Animation</option>
                 </div>
                 <div class="form-group">
                     <input type="submit" name="btnSubmit" class="btnContact" value="Send Message" />
