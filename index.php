@@ -31,19 +31,16 @@ $movies = $query->fetchall();
         <div class="card mb-4 shadow-sm">
         <iframe width="348" height="120" src="<?php echo $movie['video_link']; ?>" class="card-img-top" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
           <div class="card-body">
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            <p class="card-text"><?php echo $movie['description']; ?></p>
             <div class="d-flex justify-content-between align-items-center">
               <div class="btn-group">
                 <button type="button" class="btn btn-sm btn-outline-secondary">
                 <?php echo '<a href="movie_single.php?id='.$movie['id'].'">Regardez le film</a>' ?>
                 </button>
                 <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                <button type="button" class="btn btn-sm btn-outline-danger"><?php 
-                $id = $movie['id'];
-                $query = $db->prepare('DELETE FROM `movie` WHERE `movie`.`id` = :id'); 
-                $query->bindValue(':id', $id , PDO::PARAM_INT); // On assure que 'lid est bien un entier
-                $query->execute(); // Excute la requête?> 
-                Delete</button>
+                <button type="button" class="btn btn-sm btn-outline-danger">
+                <?php echo '<a href="delete_movie.php?id='.$movie['id'].'">Delete</a>' ?>
+                </button>
               </div>
               <small class="text-muted">9 mins</small>
             </div>

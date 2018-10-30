@@ -24,7 +24,8 @@
   </head>
 
   <body>
-     <div id = "body">
+    <div id = "body">
+
 
     <header>
       <div class="collapse" id="navbarHeader">
