@@ -2,8 +2,12 @@
     margin-top: 100px;
 }
 
-#body{
+.blue-blue-light {
     background: -webkit-linear-gradient(left, #0072ff, #00c6ff);
+}
+
+text-white {
+    color: white;
 }
 
 .contact-form{

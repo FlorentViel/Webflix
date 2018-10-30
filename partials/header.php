@@ -24,7 +24,7 @@
   </head>
 
   <body>
-    <div id = "body">
+    <div class = "blue-blue-light">
 
 
     <header>

@@ -15,7 +15,7 @@ $id = isset($_GET['id']) ? $_GET['id'] : 0;
 
 </div>
 
-
+<div class = "blue-blue-light text-white">
 <dl class="row  mt-5 mb-5 mx-auto " style="width: 800px;">
   <dt class="col-sm-3">Description lists</dt>
   <dd class="col-sm-9">A description list is perfect for defining terms.</dd>
@@ -40,6 +40,7 @@ $id = isset($_GET['id']) ? $_GET['id'] : 0;
     </dl>
   </dd>
 </dl>
+</div>
 
 
 
