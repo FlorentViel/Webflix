@@ -38,13 +38,17 @@ $currentPageTitle = $movie['title'] ;
 require_once(__DIR__.'/partials/header.php');
 
 ?>
+<div class ="bg-light">
+	<br/>
+	<h1 class="text-center bg-light"><?php echo $currentPageTitle ?></h1>
+	<br/>
+</div>
 
 <div class = "bg-dark">
-  <h1 class="text-center"><?php echo $currentPageTitle ?></h1>
   <div class="embed-responsive embed-responsive-21by9">
   <iframe src="<?php echo $movie['video_link']; ?>" class="card-img-top" class="embed-responsive-item" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 </div>
 
-
+</main>
 
 <?php include(__DIR__.'/partials/footer.php'); ?>
