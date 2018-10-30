@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  lun. 29 oct. 2018 à 17:22
+-- Généré le :  mar. 30 oct. 2018 à 17:14
 -- Version du serveur :  10.1.26-MariaDB
 -- Version de PHP :  7.1.9
 
@@ -38,6 +38,7 @@ CREATE TABLE `category` (
 --
 
 INSERT INTO `category` (`idcategory`, `name`) VALUES
+(0, NULL),
 (1, 'Action'),
 (2, 'Horreur'),
 (3, 'Aventure'),
@@ -63,11 +64,11 @@ CREATE TABLE `movie` (
 --
 
 INSERT INTO `movie` (`id`, `title`, `description`, `video_link`, `cover`, `category_idcategory`) VALUES
-(1, 'James Bond casino royal', 'Omne recreati omne quae adventu propinquabant nec iuventutis retroque quiete vicos sedibus iuventutis equestrium abierat opulentos casu retroque adventu concedentes casu recreati recreati acciverunt robur omne recreati acciverunt quae digressi.', 'https://www.youtube.com/embed/O1CzgULNRG', 'acciverunt ', 1),
-(2, 'Avatar', 'Omne recreati omne quae adventu propinquabant nec iuventutis retroque quiete vicos sedibus iuventutis equestrium abierat opulentos casu retroque adventu concedentes casu recreati recreati acciverunt robur omne recreati acciverunt quae digressi.', 'https://www.youtube.com/embed/O1CzgULNRG', 'acciverunt ', 2),
-(3, 'Le roi lion', 'Omne recreati omne quae adventu propinquabant nec iuventutis retroque quiete vicos sedibus iuventutis equestrium abierat opulentos casu retroque adventu concedentes casu recreati recreati acciverunt robur omne recreati acciverunt quae digressi.', 'https://www.youtube.com/embed/O1CzgULNRG', 'acciverunt ', 1),
-(4, 'Exorciste', 'Omne recreati omne quae adventu propinquabant nec iuventutis retroque quiete vicos sedibus iuventutis equestrium abierat opulentos casu retroque adventu concedentes casu recreati recreati acciverunt robur omne recreati acciverunt quae digressi.', 'https://www.youtube.com/embed/O1CzgULNRG', 'acciverunt ', 4),
-(5, 'Walker, Texas Ranger', 'Omne recreati omne quae adventu propinquabant nec iuventutis retroque quiete vicos sedibus iuventutis equestrium abierat opulentos casu retroque adventu concedentes casu recreati recreati acciverunt robur omne recreati acciverunt quae digressi.', 'https://www.youtube.com/embed/1NuIfInlBII', 'acciverunt ', 2);
+(69, 'test ', 'Vffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffssssssssssssssssssssss', 'zzz', 'assets/image/movie/clap.png', 1),
+(70, 'test ', 'Vffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffssssssssssssssssssssss', 'zzz', 'assets/image/movie/clap.png', 1),
+(71, 'test ', 'Vffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffssssssssssssssssssssss', 'zzz', 'assets/image/movie/clap.png', 1),
+(72, 'test ', 'Vffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffssssssssssssssssssssss', 'zzz', 'assets/image/movie/clap.png', 1),
+(73, 'test ', '211111111111111111111111111111111111111222222222222222222224', 'zzz', 'assets/image/movie/clap.png', 1);
 
 -- --------------------------------------------------------
 
@@ -105,6 +106,16 @@ ALTER TABLE `movie`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`iduser`);
+
+--
+-- AUTO_INCREMENT pour les tables déchargées
+--
+
+--
+-- AUTO_INCREMENT pour la table `movie`
+--
+ALTER TABLE `movie`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

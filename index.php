@@ -29,7 +29,7 @@ $movies = $query->fetchall();
       <div class="col-md-4">
       <strong class ="card-text"><?php echo $movie['title']; ?></strong>
         <div class="card mb-4 shadow-sm">
-        <iframe width="348" height="120" src="<?php echo $movie['video_link']; ?>" class="card-img-top" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        <img class="card-img-top" src="<?php echo $movie['cover'] ?>" alt="<?php echo $movie['title']; ?>" style ="width: auto; height: 300px;"/>      
           <div class="card-body">
             <p class="card-text"><?php echo $movie['description']; ?></p>
             <div class="d-flex justify-content-between align-items-center">
