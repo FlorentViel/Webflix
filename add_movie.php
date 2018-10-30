@@ -45,14 +45,13 @@ if (!empty($_POST)) {
     // S'il n'y a pas d'erreurs dans le formulaire
     if (empty($errors)) {
         $query = $db->prepare('
-            INSERT INTO movie (`title`, `description`, `video_link` `cover`,  `category_idcategory`  ) VALUES (:title, :description, :video_link, :cover , :category_idcategory),
+        INSERT INTO `movie` (`title`, `description`, `video_link`, `cover`) VALUES (:title, :description, :video_link, :cover)
         ');
         
         $query->bindValue(':title', $title, PDO::PARAM_STR);
         $query->bindValue(':description', $description, PDO::PARAM_STR);
         $query->bindValue(':video_link', $video_link, PDO::PARAM_STR);
         $query->bindValue(':cover', $cover, PDO::PARAM_STR);
-        $query->bindValue(':category_id_category', $category_id_category, PDO::PARAM_STR);
         if ($query->execute()) { // On insère le film dans la BDD
             $success = true;
             // Envoyer un mail ?
@@ -66,7 +65,7 @@ if (!empty($_POST)) {
 
     <?php if (isset($success) && $success) { ?>
         <div class="alert alert-success alert-dismissible fade show">
-            La pizza <strong><?php echo $name; ?></strong> a bien été ajouté avec l'id <strong><?php echo $db->lastInsertId(); ?></strong> !
+            La pizza <strong><?php echo $title; ?></strong> a bien été ajouté avec l'id <strong><?php echo $db->lastInsertId(); ?></strong> !
             <button type="button" class="close" data-dismiss="alert">
                 <span aria-hidden="true">&times;</span>
             </button>
@@ -124,7 +123,7 @@ if (!empty($_POST)) {
 <?php echo 'category_id_category :' . $category_id_category . '<br/>'; ?>
 
 
-<?php var_dump($video_link); ?>
+<?php echo($video_link); ?>
 
 
 <div class ="separator"></div>

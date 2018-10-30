@@ -15,7 +15,7 @@ $movie = $query->fetch();
 
 
 // Renvoyer une 404 si la pizza n'existe pas
-if ($movie === false){
+if ($movie === false || $id == 0){
 http_response_code(404);
 	// On pourrait aussi rediriger l'utilisateur vers la liste des pizzas
 	// deader ('Location : pizza_list.php');
@@ -50,5 +50,8 @@ require_once(__DIR__.'/partials/header.php');
 </div>
 
 </main>
+
+<div class ="separator"></div>
+
 
 <?php include(__DIR__.'/partials/footer.php'); ?>
