@@ -12,13 +12,11 @@ require_once(__DIR__.'/partials/header.php');
 // Récupérer la liste des films
 
 //}
-$query = $db->query('SELECT * FROM movie');
-$movies = $query->fetchall();
 
 $query2 = $db->query('SELECT * FROM category');
 $category = $query2->fetchall();
 
-//$category_idcategory = null;
+
 
 
 //$price = '13.00';
@@ -29,6 +27,10 @@ $category = $query2->fetchall();
 
 foreach ($category as $categori){
 
+  $idcategory = $categori['idcategory'];
+  $query = $db->query('SELECT * FROM movie WHERE category_idcategory = '.$idcategory);
+  $movies = $query->fetchall();
+
 
 
   //foreach ($category_idcategory as $category_idcategori ){
@@ -36,19 +38,19 @@ foreach ($category as $categori){
 
 <div class="album py-5 bg-light">
 
-    <h1 class = "card-text text-center"><?php echo $categori['name'];  ?></h1>
     
 
 
   <div class="container">
+
+      <h1 class = "card-text text-center mb-4"><?php echo $categori['name'];  ?></h1>
+
 
     <div class="row">
     <?php 
   // On affiche les films
 	foreach ($movies as $movie){
 
-    $query3 = $db->query('SELECT * FROM `movie` WHERE category_idcategory = '.$);
-    $category_idcategory = $query3->fetch();
 
     ?>  
   
