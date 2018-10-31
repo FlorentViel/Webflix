@@ -7,7 +7,7 @@ $currentPageTitle = "Ajoutez un film" ;
 require_once(__DIR__.'/partials/header.php');
 
 $title = $description = $video_link = null;
-$cover = null;
+$cover = $fileName = null;
 $category_idcategory = null;
 
 // le formulaire est soumis
@@ -39,13 +39,13 @@ if (!empty($_POST)) {
     }
 
     // Vérifier la catégorie
-    if (empty($category_idcategory) || !in_array($category_idcategory, ['1', '2', '3', '4'])) {
-        $errors['category_id_category'] = 'La catégorie n\'est pas valide';
+    if (empty($category_idcategory) || !in_array($category_idcategory, [ 1, 2, 3, 4])) {
+        $errors['category_idcategory'] = 'La catégorie n\'est pas valide';
     }
     // Vérifier la catégorie
-    //if (empty($category) || !in_array($category, ['Action', 'Horreur', 'Aventure', 'Animation'])) {
-        //$errors['category_id'] = 'La catégorie n\'est pas valide';
-    //}
+    //if (empty($category_idcategory) || !in_array($category_idcategory, ['Action', 'Horreur', 'Aventure', 'Animation'])) {
+     //   $errors['$category_idcategory'] = 'La catégorie n\'est pas valide';
+   // }
 
     var_dump($cover);
     $file = $cover['tmp_name']; // Emplacement du fichier temporaire
@@ -83,7 +83,7 @@ if (!empty($_POST)) {
 
     <?php if (isset($success) && $success) { ?>
         <div class="alert alert-success alert-dismissible fade show">
-            La pizza <strong><?php echo $title; ?></strong> a bien été ajouté avec l'id <strong><?php echo $db->lastInsertId(); ?></strong> !
+            La film <strong><?php echo $title; ?></strong> a bien été ajouté avec l'id <strong><?php echo $db->lastInsertId(); ?></strong> !
             <button type="button" class="close" data-dismiss="alert">
                 <span aria-hidden="true">&times;</span>
             </button>

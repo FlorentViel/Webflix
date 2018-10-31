@@ -19,6 +19,8 @@ Pages:
 - Supprimer un film (movie_delete.php?id=4) -> On peut supprimer un film dans la BDD. On doit avoir un bouton supprimer sur la liste des films, on clique, on supprime le film en question et on revient sur la liste des films.
 - Film random (movie_random.php) -> On affiche 4 films de manière aléatoire
 
+-- Terminé --- 
+
 --- PARTIE 3 ---
 - Inscription (register.php) -> Formulaire d'inscription (email, username, mot de passer, confirmer le mot de passe)
 - Connexion (login.php) -> Formulaire de connexion (email, mot de passe)

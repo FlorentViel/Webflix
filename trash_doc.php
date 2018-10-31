@@ -71,6 +71,17 @@
         $query3 = $db->query('SELECT * FROM `movie` ORDER BY `movie`.`category_idcategory` ASC' );
         $category_idcategory = $query3->fetch();
 
+        $query = $db->prepare('UPDATE `movie` SET `title` = '5020', `description` = '757507542074572725072075275752727520702572074272575757575702', `video_link` = 'https://www.youtube.com/embed/StZcUAPRRac?list=RDW3q8Od5qJio', `cover` = 'assets/image/movie/test.png', `category_idcategory` = '2' WHERE `movie`.`id` = 70;');
+        
 
-
+    
 ?>
+
+        <?php if (isset($success) && $success) { ?>
+            <div class="alert alert-success alert-dismissible fade show">
+                Le film <strong><?php echo $title; ?></strong> a bien été ajouté avec l'id <strong><?php echo $db->lastInsertId(); ?></strong> !
+                <button type="button" class="close" data-dismiss="alert">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        <?php } ?>

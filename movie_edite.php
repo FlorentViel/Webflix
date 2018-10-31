@@ -26,6 +26,10 @@ $currentPageTitle = $movie['title'] ;
 // Le fichier header.php est inbclus sur la page
 require_once(__DIR__.'/partials/header.php');
 
+$title = $description = $video_link = null;
+$cover = $fileName = null;
+$category_idcategory = null;
+
 if (!empty($_POST)) {
     $title = $_POST['title'];
     $video_link = $_POST['video_link'];
@@ -54,7 +58,7 @@ if (!empty($_POST)) {
 
     // Vérifier la catégorie
     if (empty($category_idcategory) || !in_array($category_idcategory, ['1', '2', '3', '4'])) {
-        $errors['category_id_category'] = 'La catégorie n\'est pas valide';
+        $errors['category_idcategory'] = 'La catégorie n\'est pas valide';
     }
     // Vérifier la catégorie
     //if (empty($category) || !in_array($category, ['Action', 'Horreur', 'Aventure', 'Animation'])) {
@@ -71,16 +75,22 @@ if (!empty($_POST)) {
         $errors['cover'] = 'Ce type de fichier n\'est pas autorisé';
     }
 
-
-    // S'il n'y a pas d'erreurs dans le formulaire
     if (empty($errors)) {
-        $query = $db->prepare('UPDATE `movie` SET `title` = :title, `description` = '757507542074572725072075275752727520702572074272575757575702', `video_link` = :video_link, `cover` = 'assets/image/movie/test.png', `category_idcategory` = '2' WHERE `movie`.`id` = 70;');
+
+        
+
+    $query = $db->prepare('
+    UPDATE movie SET title = :title , description = :description, video_link = :video_link, cover = :cover, category_idcategory= :category_idcategory WHERE movie.id = :id');
         
         $query->bindValue(':title', $title, PDO::PARAM_STR);
         $query->bindValue(':description', $description, PDO::PARAM_STR);
         $query->bindValue(':video_link', $video_link, PDO::PARAM_STR);
         $query->bindValue(':cover', $fileName, PDO::PARAM_STR);
         $query->bindValue(':category_idcategory', $category_idcategory, PDO::PARAM_STR);
+        $query->bindValue(':id', $id, PDO::PARAM_INT);
+
+
+
 
         if ($query->execute()) { // On insère le film dans la BDD
             $success = true;
@@ -90,13 +100,16 @@ if (!empty($_POST)) {
     }
 
 }
+    
+var_dump($description);
+
 
 ?>
 
 
 <?php if (isset($success) && $success) { ?>
     <div class="alert alert-success alert-dismissible fade show">
-        La pizza <strong><?php echo $title; ?></strong> a bien été ajouté avec l'id <strong><?php echo $db->lastInsertId(); ?></strong> !
+        Le film <strong><?php echo $title; ?></strong> avec l'id <strong><?php echo $id; ?></strong> a bien été modifié !
         <button type="button" class="close" data-dismiss="alert">
             <span aria-hidden="true">&times;</span>
         </button>
