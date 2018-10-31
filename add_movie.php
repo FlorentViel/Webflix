@@ -138,7 +138,6 @@ if (!empty($_POST)) {
                     } ?>
                 </div>
 
-               <?php var_dump($category_idcategory); ?>
                 <div class="form-group">
                     <input type="submit" name="btnSubmit" class="btnContact" value="Send Message" />
                 </div>
@@ -160,18 +159,6 @@ if (!empty($_POST)) {
 </div>
 
 </main>
-
-<?php if (isset($errors['title'])) {
-echo $errors['title'];
- }
- else  echo 'nom du film : ' . $title . '<br/>';?> 
-
-<?php echo 'description : ' . $description . '<br/>'; ?>
-<?php echo 'cover :' . $fileName . '<br/>'; ?>
-<?php echo 'category_idcategory :' . $category_idcategory . '<br/>'; ?>
-
-
-<?php echo($video_link); ?>
 
 
 <div class ="separator"></div>
