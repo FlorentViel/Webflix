@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  mar. 30 oct. 2018 à 17:14
+-- Généré le :  mer. 31 oct. 2018 à 16:34
 -- Version du serveur :  10.1.26-MariaDB
 -- Version de PHP :  7.1.9
 
@@ -38,7 +38,6 @@ CREATE TABLE `category` (
 --
 
 INSERT INTO `category` (`idcategory`, `name`) VALUES
-(0, NULL),
 (1, 'Action'),
 (2, 'Horreur'),
 (3, 'Aventure'),
@@ -64,11 +63,13 @@ CREATE TABLE `movie` (
 --
 
 INSERT INTO `movie` (`id`, `title`, `description`, `video_link`, `cover`, `category_idcategory`) VALUES
-(69, 'test ', 'Vffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffssssssssssssssssssssss', 'zzz', 'assets/image/movie/clap.png', 1),
-(70, 'test ', 'Vffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffssssssssssssssssssssss', 'zzz', 'assets/image/movie/clap.png', 1),
-(71, 'test ', 'Vffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffssssssssssssssssssssss', 'zzz', 'assets/image/movie/clap.png', 1),
-(72, 'test ', 'Vffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffssssssssssssssssssssss', 'zzz', 'assets/image/movie/clap.png', 1),
-(73, 'test ', '211111111111111111111111111111111111111222222222222222222224', 'zzz', 'assets/image/movie/clap.png', 1);
+(70, 'test 758757', 'ezrzrzrffffffffffffffffffffffff', 'https://www.youtube.com/embed/Jxq_133jEtQ', 'assets/image/movie/clap.png', 2),
+(71, 'Test aventure', 'Vffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffssssssssssssssssssssss', 'https://www.youtube.com/embed/Jxq_133jEtQ', 'assets/image/movie/clap.png', 3),
+(72, 'Test animation', 'Vffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffssssssssssssssssssssss', 'https://www.youtube.com/embed/Jxq_133jEtQ', 'assets/image/movie/clap.png', 4),
+(74, 'Test animation', 'Vffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffssssssssssssssssssssss', 'https://www.youtube.com/embed/Jxq_133jEtQ', 'assets/image/movie/clap.png', 4),
+(76, 'test horreur', 'rrrrrrrzzzzfffffsssssssffffffffssssssfffffsssssssssssssss', 'https://www.youtube.com/embed/kuowPVqvnRk', 'assets/image/movie/clap.png', 2),
+(77, 'test animation', 'TEST TESTTESTTESTTESTTESTTESTTESTTESTTEST', 'https://www.youtube.com/embed/nkO-3KflR0U', 'assets/image/movie/clap.png', 4),
+(78, 'test action', 'aaeaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaae', 'https://www.youtube.com/embed/af59U2BRRAU', 'assets/image/movie/clap.png', 1);
 
 -- --------------------------------------------------------
 
@@ -112,10 +113,16 @@ ALTER TABLE `user`
 --
 
 --
+-- AUTO_INCREMENT pour la table `category`
+--
+ALTER TABLE `category`
+  MODIFY `idcategory` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT pour la table `movie`
 --
 ALTER TABLE `movie`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

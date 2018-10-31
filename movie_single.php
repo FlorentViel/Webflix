@@ -36,10 +36,11 @@ require_once(__DIR__.'/partials/header.php');
   <div class="embed-responsive embed-responsive-21by9">
   <iframe src="<?php echo $movie['video_link']; ?>" class="card-img-top" class="embed-responsive-item" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 </div>
-
 </main>
 
-<div class ="separator"></div>
+<div class ="separator white"></div>
+
+
 
 
 <?php include(__DIR__.'/partials/footer.php'); ?>

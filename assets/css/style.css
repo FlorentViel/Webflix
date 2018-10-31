@@ -2,6 +2,10 @@
     margin-top: 100px;
 }
 
+.white{
+    background: #fff;
+}
+
 .blue-blue-light {
     background: -webkit-linear-gradient(left, #0072ff, #00c6ff);
 }
