@@ -36,7 +36,7 @@
               <ul class="list-unstyled">
                 <li><a href="index.php" class="text-white">Film</a></li>
                 <li><a href="add_movie.php" class="text-white">Poster un film</a></li>
-                <li><a href="#" class="text-white">Catégorie</a></li>
+                <li><a href="movie_random.php" class="text-white">Film aléatoire</a></li>
               </ul>
             </div>
             <div class="col-sm-4 offset-md-1 py-4">

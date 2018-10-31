@@ -5,24 +5,9 @@ $currentPageTitle = 'Nos films';
 require_once(__DIR__.'/partials/header.php');
 
 
-
-//for($category_idcategory = 1; $category_idcategory <= 4; ++$category_idcategory) {
-  //$param = $category_idcategory;
-
-// Récupérer la liste des films
-
-//}
-
 $query2 = $db->query('SELECT * FROM category');
 $category = $query2->fetchall();
 
-
-
-
-//$price = '13.00';
-//$first = substr($price, 0, -2); // 13
-//$cents = substr($price, -2); // 00
-//echo $first.',<span style ="font-size: 12px">' . $cents . '</span>';
 
 
 foreach ($category as $categori){
