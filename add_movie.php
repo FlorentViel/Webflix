@@ -52,7 +52,7 @@ if (!empty($_POST)) {
     $finfo = finfo_open(FILEINFO_MIME_TYPE);
     $mimeType = finfo_file($finfo, $file); 
     $allowedExtension = ['image/jpg', 'image/jpeg', 'image/gif', 'image/png'];
-    $fileName = 'assets/img/movie/'.$cover['name'];
+    $fileName = 'assets/image/movie/'.$cover['name'];
     if (!in_array($mimeType, $allowedExtension)){
         $errors['cover'] = 'Ce type de fichier n\'est pas autorisé';
     }

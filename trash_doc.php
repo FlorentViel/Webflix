@@ -62,5 +62,15 @@
         INSERT INTO `movie` (`title`, `description`, `video_link`, `cover`, `category_idcategory`) VALUES (:title, :description, :video_link, :cover , :category_idcategory)
         ');
 
+        $query = $db->prepare('
+        SELECT * FROM `movie` ORDER BY `movie`.`category_idcategory` ASC
+        ');
+
+        $query3 = $db->query('SELECT * FROM `movie` WHERE category_idcategory = '.$id);
+        $category_idcategory = $query3->fetch();
+        $query3 = $db->query('SELECT * FROM `movie` ORDER BY `movie`.`category_idcategory` ASC' );
+        $category_idcategory = $query3->fetch();
+
+
 
 ?>
