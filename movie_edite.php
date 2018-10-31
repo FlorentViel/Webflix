@@ -24,7 +24,7 @@ http_response_code(404);
 <?php	require_once(__DIR__.'/partials/footer.php');
 	die();
 }
-$currentPageTitle = "Editez le film : " . $movie['title'] ;
+$currentPageTitle = "Edition du film : " . $movie['title'] ;
 // Le fichier header.php est inbclus sur la page
 require_once(__DIR__.'/partials/header.php');
 
