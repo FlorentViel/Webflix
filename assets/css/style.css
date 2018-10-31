@@ -47,7 +47,7 @@ text-white {
     color: #0062cc;
 }
 .contact-form .btnContact {
-    width: auto;
+    width: 50%;
     border: none;
     border-radius: 1rem;
     padding: 1.5%;

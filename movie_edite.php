@@ -65,7 +65,6 @@ if (!empty($_POST)) {
         //$errors['category_id'] = 'La catégorie n\'est pas valide';
     //}
 
-    var_dump($cover);
     $file = $cover['tmp_name']; // Emplacement du fichier temporaire
     $finfo = finfo_open(FILEINFO_MIME_TYPE);
     $mimeType = finfo_file($finfo, $file); 
@@ -101,9 +100,6 @@ if (!empty($_POST)) {
 
 }
     
-var_dump($description);
-
-
 ?>
 
 
@@ -164,9 +160,8 @@ var_dump($description);
                 } ?>
             </div>
 
-           <?php var_dump($category_idcategory); ?>
             <div class="form-group">
-                <input type="submit" name="btnSubmit" class="btnContact" value="Send Message" />
+                <input type="submit" name="btnSubmit" class="btnContact" value="Editer" />
             </div>
         </div>
         <div class="col-md-6">
@@ -183,26 +178,13 @@ var_dump($description);
         </div>
     </div>
 </form>
-</div>
+
+    </div>
+
+    <div class = "blue-blue-light mb-5"></div>
+
 
 </main>
-
-<?php if (isset($errors['title'])) {
-echo $errors['title'];
-}
-else  echo 'nom du film : ' . $title . '<br/>';?> 
-
-<?php echo 'description : ' . $description . '<br/>'; ?>
-<?php echo 'cover :' . $fileName . '<br/>'; ?>
-<?php echo 'category_idcategory :' . $category_idcategory . '<br/>'; ?>
-
-
-<?php echo($video_link); ?>
-
-
-<div class ="separator"></div>
-
-
 <?php
 // Le fichier footer.php est inclus sur la page
 require_once(__DIR__.'/partials/footer.php'); ?>

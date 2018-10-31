@@ -50,7 +50,9 @@ foreach ($category as $categori){
                 <button type="button" class="btn btn-sm btn-outline-secondary">
                 <?php echo '<a href="movie_single.php?id='.$movie['id'].'">Regardez le film</a>' ?>
                 </button>
-                <button type="button" class="btn btn-sm btn-outline-secondary"> <?php echo '<a href="movie_edite.php?id='.$movie['id'].'">Edite</a>' ?></button>
+                <button type="button" class="btn btn-sm btn-outline-secondary">
+                <?php echo '<a href="movie_edite.php?id='.$movie['id'].'">Edite</a>' ?>
+                </button>
                 <button type="button" class="btn btn-sm btn-outline-danger">
                 <?php echo '<a href="delete_movie.php?id='.$movie['id'].'">Delete</a>' ?>
                 </button>

@@ -47,7 +47,6 @@ if (!empty($_POST)) {
      //   $errors['$category_idcategory'] = 'La catégorie n\'est pas valide';
    // }
 
-    var_dump($cover);
     $file = $cover['tmp_name']; // Emplacement du fichier temporaire
     $finfo = finfo_open(FILEINFO_MIME_TYPE);
     $mimeType = finfo_file($finfo, $file); 
@@ -139,7 +138,7 @@ if (!empty($_POST)) {
                 </div>
 
                 <div class="form-group">
-                    <input type="submit" name="btnSubmit" class="btnContact" value="Send Message" />
+                    <input type="submit" name="btnSubmit" class="btnContact" value="Ajouter" />
                 </div>
             </div>
             <div class="col-md-6">
@@ -159,10 +158,6 @@ if (!empty($_POST)) {
 </div>
 
 </main>
-
-
-<div class ="separator"></div>
-
 
 <?php
 // Le fichier footer.php est inclus sur la page
