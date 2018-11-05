@@ -70,7 +70,7 @@ foreach ($category as $categori){
 
 <?php 
 //}
-  } ?>
+ } ?>
 
 </main>
 

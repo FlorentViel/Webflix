@@ -143,7 +143,7 @@ if (!empty($_POST)) {
             </div>
             <div class="col-md-6">
                 <div class="form-group">
-                    <textarea name="description" class="form-control"  rows="5" placeholder="Description *" style="width: 100%; height: 202px;"></textarea>
+                    <textarea name="description" class="form-control"  rows="5" placeholder="Description *" style="width: 100%; height: 202px;" <?php echo isset($errors['description']) ? 'invalid' : null; ?>></textarea>
                     <?php  
                     if(isset($errors['description'])){
                         echo '<div class="invalid">';
